@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Counter from './components/Counter';
 import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
@@ -29,18 +30,22 @@ function App() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
+      
       </div>
 
-      {/* Component Rendering */}
       <WelcomeMessage />
       <Header />
       <MainContent />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+      <p> <h1>Counter Application</h1> <Counter /> </p>
       <Footer />
 
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+
+
     </>
   );
 }
