@@ -19,7 +19,7 @@ function Contact() {
   return (
     <div className="container">
       <h1>Contact Us</h1>
-      <img src="src/Contact-img.jpg" alt="Contact Us" />
+      <img src="src/components/Contact-img.jpg" alt="Contact Us" />
       <form onSubmit={handleSubmit}>
         <input
           type="text"
