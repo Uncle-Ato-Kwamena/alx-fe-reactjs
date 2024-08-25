@@ -1,19 +1,28 @@
-import useRecipeStore from './recipeStore'
+import React, { useEffect } from 'react';
+import { useRecipeStore } from './recipeStore';
 
 const RecipeList = () => {
-    const recipes = useRecipeStore((state) => state.recipes);
-    console.log("Recipes:", recipes); // Log recipes to check state
-  
-    return (
-      <div>
-        {recipes.map((recipe) => (
+  const recipes = useRecipeStore((state) => state.filteredRecipes);
+  const filterRecipes = useRecipeStore((state) => state.filterRecipes);
+
+  useEffect(() => {
+    filterRecipes(); // Trigger filtering when component mounts
+  }, [filterRecipes]);
+
+  return (
+    <div>
+      {recipes.length > 0 ? (
+        recipes.map(recipe => (
           <div key={recipe.id}>
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
           </div>
-        ))}
-      </div>
-    );
-  };
-  
-  export default RecipeList;
+        ))
+      ) : (
+        <p>No recipes found.</p>
+      )}
+    </div>
+  );
+};
+
+export default RecipeList;
