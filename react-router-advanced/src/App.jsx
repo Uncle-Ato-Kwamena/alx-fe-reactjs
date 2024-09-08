@@ -33,7 +33,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/post/:postId" element={<Post />} />
+       <Route path="/blog/:id" element={<BlogPost />} />
       </Routes>
     </Router>
   );
