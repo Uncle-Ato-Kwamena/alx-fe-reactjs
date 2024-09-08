@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 
-// Function to fetch posts from the API
+
 const fetchPosts = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   if (!response.ok) {
@@ -11,23 +11,23 @@ const fetchPosts = async () => {
 };
 
 const PostsComponent = () => {
-  // Using React Query's useQuery to fetch posts
-  const { data, error, isLoading, refetch } = useQuery('posts', fetchPosts);
+ 
+  const { data, error, isLoading, isError, refetch } = useQuery('posts', fetchPosts);
 
-  if (isLoading) return <div>Loading...</div>; // Show loading message while data is being fetched
-  if (error) return <div>Error: {error.message}</div>; // Show error message if fetching fails
+  if (isLoading) return <div>Loading...</div>; 
+  if (isError) return <div>Error: {error.message}</div>; 
 
   return (
     <div>
       <h1>Posts</h1>
-      <button onClick={() => refetch()}>Refetch Data</button> {/* Button to manually refetch data */}
+      <button onClick={() => refetch()}>Refetch Data</button> {}
       <ul>
-        {data && data.length > 0 ? ( // Check if data exists and has content
+        {data && data.length > 0 ? ( 
           data.map(post => (
-            <li key={post.id}>{post.title}</li> // Display each post title
+            <li key={post.id}>{post.title}</li> 
           ))
         ) : (
-          <li>No posts available</li> // Message if no posts are available
+          <li>No posts available</li> 
         )}
       </ul>
     </div>
