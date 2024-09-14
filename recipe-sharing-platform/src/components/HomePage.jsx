@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import RecipeCard from './RecipeCard';
-import recipeData from './data.json'; // Ensure you have the correct path
+import recipeData from './data/data.json';
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
