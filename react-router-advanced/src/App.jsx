@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Post from './components/Post';
 import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
