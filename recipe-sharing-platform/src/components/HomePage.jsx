@@ -15,9 +15,14 @@ const HomePage = () => {
       <h1 className="text-4xl font-bold text-center my-8">Recipe Sharing Platform</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {recipes.map(recipe => (
+          
           <Link to={`/recipe/${recipe.id}`} key={recipe.id} className="p-4 bg-white shadow-md hover:shadow-xl rounded-lg transition-shadow">
             <RecipeCard recipe={recipe} />
+
+            <Link to="/add-recipe" className="text-blue-500 hover:underline">Add New Recipe</Link>
+
           </Link>
+          
         ))}
       </div>
     </div>
