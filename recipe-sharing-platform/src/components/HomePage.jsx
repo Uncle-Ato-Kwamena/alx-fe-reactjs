@@ -1,9 +1,8 @@
-// src/components/HomePage.jsx
+
 
 import React, { useState, useEffect } from 'react';
 import RecipeCard from './RecipeCard';
-import recipeData from './data/data.json';
-
+import recipeData from "../data/data.json";
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
