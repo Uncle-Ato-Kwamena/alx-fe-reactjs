@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { fetchUserData } from '../services/githubService';
 
-const Search = () => {
+const Search = () => { // Capitalize 'Search'
   const [username, setUsername] = useState('');
   const [location, setLocation] = useState('');
   const [minRepos, setMinRepos] = useState('');
@@ -15,11 +15,7 @@ const Search = () => {
     setError(false);
     
     try {
-      // Perform fetch
       const data = await fetchUserData(username, location, minRepos);
-
-      // Since GitHub search API doesn't directly support location or minRepos filtering,
-      // we manually filter user data based on these criteria.
       const filteredUsers = data.items.filter((user) => {
         const matchesLocation = location ? user.location?.toLowerCase().includes(location.toLowerCase()) : true;
         const matchesMinRepos = minRepos ? user.public_repos >= parseInt(minRepos, 10) : true;

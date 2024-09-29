@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Search from './Components/Search';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         </h1>
         <Routes>
           {/* Define routes for the app */}
-          <Route path="/" element={<Search />} />
+          <Route path="/" element={<Search />} /> {/* Capitalize 'Search' */}
           {/* You can add more routes as your app grows */}
         </Routes>
       </div>
