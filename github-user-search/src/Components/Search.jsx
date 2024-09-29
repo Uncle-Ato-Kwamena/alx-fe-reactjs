@@ -13,9 +13,20 @@ const Search = () => {
     e.preventDefault();
     setLoading(true);
     setError(false);
+    
     try {
+      // Perform fetch
       const data = await fetchUserData(username, location, minRepos);
-      setUserData(data.items || []);
+
+      // Since GitHub search API doesn't directly support location or minRepos filtering,
+      // we manually filter user data based on these criteria.
+      const filteredUsers = data.items.filter((user) => {
+        const matchesLocation = location ? user.location?.toLowerCase().includes(location.toLowerCase()) : true;
+        const matchesMinRepos = minRepos ? user.public_repos >= parseInt(minRepos, 10) : true;
+        return matchesLocation && matchesMinRepos;
+      });
+
+      setUserData(filteredUsers);
       setUsername('');
       setLocation('');
       setMinRepos('');
@@ -63,7 +74,7 @@ const Search = () => {
       </form>
 
       {loading && <p className="text-center mt-4 text-[#f8f9fa]">Loading...</p>}
-      {error && <p className="text-center text-red-500 mt-4">Looks like we cant find the user.</p>}
+      {error && <p className="text-center text-red-500 mt-4">Looks like we can't find the user.</p>}
 
       {userData.length > 0 && (
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -76,7 +87,7 @@ const Search = () => {
               />
               <h3 className="text-center mt-4 text-lg font-semibold text-[#f8f9fa]">{user.login}</h3>
               <p className="text-center text-[#6c757d]">{user.location || 'No location specified'}</p>
-              <p className="text-center text-[#6c757d]">Repositories: {user.public_repos || 'No repo'}</p>
+              <p className="text-center text-[#6c757d]">Repositories: {user.public_repos ?? 'No repo info'}</p>
               <a
                 href={user.html_url}
                 target="_blank"
