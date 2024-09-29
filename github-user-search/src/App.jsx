@@ -11,8 +11,7 @@ function App() {
         </h1>
         <Routes>
           {/* Define routes for the app */}
-          <Route path="/" element={<Search />} /> {/* Capitalize 'Search' */}
-          {/* You can add more routes as your app grows */}
+          <Route path="/" element={<Search />} /> 
         </Routes>
       </div>
     </Router>
