@@ -15,14 +15,17 @@ const Search = () => {
     try {
       // Fetch user data from GitHub API
       const data = await fetchUserData(username);
-      if (data && data.length > 0) {
+
+      // Check if user data is found
+      if (data) {
         setUserData(data);
       } else {
-        setError(true);
+        setError(true); // Set error if no data found
       }
-      setUsername(''); 
+
+      setUsername(''); // Clear input field
     } catch (err) {
-      setError(true);
+      setError(true); // Set error on catch
       setUserData(null);
     } finally {
       setLoading(false);
@@ -48,7 +51,7 @@ const Search = () => {
       </form>
 
       {loading && <p className="text-center mt-4 text-[#f8f9fa]">Loading...</p>}
-      {error && <p className="text-center text-red-500 mt-4">Looks like we can't find the user.</p>}
+      {error && <p className="text-center text-red-500 mt-4">Looks like we can't find the user.</p>} {/* This is the message you're looking for */}
 
       {userData && (
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
